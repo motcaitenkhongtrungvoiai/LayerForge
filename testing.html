@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PSD Extract Animation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #1e1e1e;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .psd-file {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 160px;
+      background: linear-gradient(#2d2dff, #1a1a99);
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      line-height: 160px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #000;
+      z-index: 10;
+      transition: transform 1s ease-in-out, opacity 0.5s;
+    }
+
+    .layer, .json-file {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      line-height: 80px;
+      border-radius: 6px;
+      opacity: 0;
+      transition: transform 1s ease, opacity 1s;
+    }
+
+    .layer {
+      background: url('https://via.placeholder.com/80x80.png?text=PNG') no-repeat center;
+      background-size: cover;
+    }
+
+    .json-file {
+      background-color: #333;
+      color: #0f0;
+      font-size: 14px;
+    }
+
+    button {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 24px;
+      background: #00aaff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="psd-file" id="psd">PSD</div>
+
+    <!-- Tạo sẵn 4 layer -->
+    <div class="layer" style="--i:0" id="layer1"></div>
+    <div class="layer" style="--i:1" id="layer2"></div>
+    <div class="layer" style="--i:2" id="layer3"></div>
+    <div class="layer" style="--i:3" id="layer4"></div>
+
+    <!-- JSON mô tả -->
+    <div class="json-file" id="jsonFile">{JSON}</div>
+
+    <button onclick="extract()">Tách PSD</button>
+  </div>
+
+  <script>
+    function extract() {
+      const psd = document.getElementById("psd");
+      psd.style.opacity = "0";
+
+      const layers = document.querySelectorAll(".layer");
+      const positions = [
+        [-200, -150],
+        [200, -120],
+        [-180, 150],
+        [160, 180]
+      ];
+
+      layers.forEach((layer, index) => {
+        const [x, y] = positions[index];
+        layer.style.transform = `translate(${x}px, ${y}px)`;
+        layer.style.opacity = "1";
+      });
+
+      const json = document.getElementById("jsonFile");
+      json.style.transform = "translate(180px, 0)";
+      json.style.opacity = "1";
+    }
+  </script>
+</body>
+</html>
