@@ -2,7 +2,7 @@ const PSD = require("psd");
 const path = require("path");
 const fs = require("fs");
 
-const FilePSdPath = "iyhga.psd";
+const FilePSdPath = "testting.psd";
 const psdPath = path.join(__dirname, FilePSdPath);
 
 // Tạo base name cho folder
