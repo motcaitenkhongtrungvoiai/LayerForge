@@ -11,20 +11,19 @@ const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(
     winston.format.timestamp(),
-    winston.format.printf(({ timestamp, level, message }) => {
-      return `[${timestamp}] ${level.toUpperCase()}: ${message}`;
-    })
+    winston.format.json(),
   ),
   transports: [
     new winston.transports.Console(),
     new winston.transports.File({
-      filename: path.join(logDir, "error.log"),
+      filename: path.join(logDir, "error.jsonl"),
       level: "error",
     }),
     new winston.transports.File({
-      filename: path.join(logDir, "combined.log"),
+      filename: path.join(logDir, "combined.jsonl"),
     }),
   ],
+ 
 });
 module.exports= {logger}
 //logger.info("Thông báo bình thường");
