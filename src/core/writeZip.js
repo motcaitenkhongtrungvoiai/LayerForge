@@ -38,9 +38,11 @@ function zipFolder(sourceFolder, outPath) {
 }
 module.exports={zipFolder}
 // Thư mục cần nén
+/*
 const inputFolder = path.join(__dirname, "../output/testting");
 
 // File zip sẽ tạo ra
 const outputZip = path.join(__dirname, "../output/testting.zip");
 
 zipFolder(inputFolder, outputZip);
+*/

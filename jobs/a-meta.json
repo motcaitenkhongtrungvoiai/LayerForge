@@ -14,7 +14,7 @@
       "width": 951,
       "mask": {},
       "image": {},
-      "id": "layer_0"
+      "id": 0
     },
     {
       "type": "group",
@@ -43,7 +43,7 @@
           "width": 231,
           "mask": {},
           "image": {},
-          "id": "layer_1"
+          "id": 1
         },
         {
           "type": "layer",
@@ -70,7 +70,7 @@
             "invert": false
           },
           "image": {},
-          "id": "layer_2"
+          "id": 2
         }
       ]
     },
@@ -88,7 +88,7 @@
       "width": 313,
       "mask": {},
       "image": {},
-      "id": "layer_3"
+      "id": 3
     },
     {
       "type": "layer",
@@ -104,7 +104,7 @@
       "width": 4500,
       "mask": {},
       "image": {},
-      "id": "layer_4"
+      "id": 4
     }
   ],
   "document": {

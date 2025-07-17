@@ -7,4 +7,6 @@ const inputFile= path.join(__dirname,'../core/testting.psd')
 const outPath = path.join(__dirname,'../../jobs')
 
 const ripperPSD = new RipperPSD(inputFile,outPath)
-ripperPSD.bigFile()
+//ripperPSD.smallerFile();
+ripperPSD.RipperPSD()
+ripperPSD.ParsePSD()
