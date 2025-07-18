@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSD Tool</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f7f7f7;
+    }
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+    }
+    .status {
+      margin-top: 1rem;
+      color: #333;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Upload PSD và xử lý</h2>
+    <form id="uploadForm">
+      <input type="file" name="psdFile" accept=".psd" required />
+      <br />
+      <button type="submit">Upload & Xử lý</button>
+    </form>
+    <div class="status" id="status"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("uploadForm");
+    const statusDiv = document.getElementById("status");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const fileInput = form.querySelector("input[type='file']");
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append("psdFile", file);
+
+      statusDiv.textContent = "⏳ Đang xử lý...";
+      statusDiv.className = "status";
+
+      try {
+        const res = await fetch("http://localhost:3000/api/psd/upload", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!res.ok) {
+          throw new Error("Lỗi khi gửi file lên server");
+        }
+
+        const data = await res.json();
+        statusDiv.innerHTML =
+          `<span class="success">✅ Hoàn tất!</span> ` +
+          `<br><a href="${data.zipPath}" download>Tải file ZIP</a>`;
+      } catch (err) {
+        console.error(err);
+        statusDiv.innerHTML = `<span class="error">❌ ${err.message}</span>`;
+      }
+    });
+  </script>
+</body>
+</html>

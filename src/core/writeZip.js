@@ -9,7 +9,7 @@ async function zipFolder(sourceFolder, outPath,callback) {
     logger.error(` Thư mục không tồn tại: ${sourceFolder}`);
     return;
   }
-
+  
   const output = fs.createWriteStream(outPath);
   const archive = archiver("zip", {
     zlib: { level: 9 }, // nén tối đa
