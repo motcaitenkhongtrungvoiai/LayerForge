@@ -3,7 +3,7 @@ const archiver = require("archiver");
 const path = require("path");
 const { logger } = require("../until/writeLog");
 
-function zipFolder(sourceFolder, outPath) {
+async function zipFolder(sourceFolder, outPath,callback) {
   // Kiểm tra thư mục đầu vào
   if (!fs.existsSync(sourceFolder)) {
     logger.error(` Thư mục không tồn tại: ${sourceFolder}`);
@@ -17,6 +17,7 @@ function zipFolder(sourceFolder, outPath) {
 
   output.on("close", () => {
     logger.info(` Đã tạo file zip: ${outPath} (${archive.pointer()} bytes)`);
+    callback()
   });
 
   archive.on("warning", (err) => {
@@ -36,7 +37,7 @@ function zipFolder(sourceFolder, outPath) {
   archive.directory(sourceFolder, false); // false để không lấy tên thư mục gốc
   archive.finalize();
 }
-module.exports={zipFolder}
+module.exports = zipFolder
 // Thư mục cần nén
 /*
 const inputFolder = path.join(__dirname, "../output/testting");
