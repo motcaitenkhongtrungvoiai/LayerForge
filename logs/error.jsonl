@@ -1,0 +1,1 @@
+{"level":"error","message":"Lỗi xử lý PSD: zipFolder is not a function","stack":"TypeError: zipFolder is not a function\n  at processPSD (D:\\bai_tap\\PSD_tool\\src\\controller\\PSD_tool.js:25:5)\n  at processTicksAndRejections (node:internal/process/task_queues:105:5)\n","timestamp":"2025-07-19T08:32:44.168Z"}
