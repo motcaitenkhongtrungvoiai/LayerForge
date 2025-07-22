@@ -1,5 +1,5 @@
 {
-  "name": "ripper PSD",
+  "name": "ripperpsd",
   "version": "1.0.0",
   "description": "some stupit web app i makeing to turn layer in the psd file to a gr or png file and rip it to a zip ",
   "main": "index.js",
