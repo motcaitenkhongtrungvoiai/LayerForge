@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
+const cors = require('cors')
 const path = require("path");
 const ripperRoutes = require("./router/ripperPSDrouter");
-
 app.use(express.json());
-
+app.use(cors())
 // Trả file zip ra cho frontend tải về
 app.use("/download", express.static(path.join(__dirname, "download_enable")));
 

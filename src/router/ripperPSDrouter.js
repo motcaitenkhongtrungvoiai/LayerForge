@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const upload = require("../middleware/uploadPSD");
-const { processPSD } = require('../controller/PSD_tool')
+const  processPSD  = require('../controller/PSD_tool')
 const verification = require("../middleware/verification");
 
 
